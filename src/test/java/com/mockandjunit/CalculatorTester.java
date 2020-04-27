@@ -17,15 +17,15 @@ import org.mockito.runners.MockitoJUnitRunner;
 public class CalculatorTester {
 
 	// @InjectMocks = create and inject the mock object
-	@InjectMocks
+//	@InjectMocks
 	Calculator calc = new Calculator();
 
 	// @Mock = create and mock objects to be injected
 	@Mock
 	CalculatorService calcService;
 
-	@Test
-	public void testAdd() {
+//	@Test
+//	public void testAdd() {
 		/*
 		 * Mockito adds a functionality to a mock object using the methods when().
 		 */
@@ -118,5 +118,18 @@ public class CalculatorTester {
 //
 //		// check if add function is called maximum 3 times
 //		verify(calcService, atMost(3)).add(10.0, 20.0);
+//	}
+	
+	// __________________________________________________________
+	/*
+	 * Mockito provides the capability to a mock to throw exceptions, 
+	 * so exception handling can be tested.
+	 */
+	@Test(expected = RuntimeException.class)
+	public void testAdd() {
+		doThrow(new RuntimeException("Add Operation not implemented"))
+		.when(calcService).add(10.0,20.0);
 	}
+	
+	
 }
