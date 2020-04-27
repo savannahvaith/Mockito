@@ -3,6 +3,8 @@ package com.mockandjunit;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
+import static org.mockito.BDDMockito.*;
+
 import org.junit.*;
 import org.junit.runner.RunWith;
 import org.mockito.InOrder;
@@ -134,20 +136,36 @@ public class CalculatorTester2 {
 	 * Mockito provides the capability to reset a mock so that it can be reused later.
 	 * 
 	 */
-	@Test
-	public void testAddAndSub() { 
-		when(cs.add(20.0, 10.0)).thenReturn(30.0);
-		assertEquals(calc.add(20.0, 10.0),30.0,0);
-		//reset the mock 
-		reset(cs);
-		//test the add functionality after resetting the mock
-		assertEquals(calc.add(20.0, 10.0),30.0,0);
-		
-	/*
-	 * Here we've reset mock object. Calc makes use of calcService and after reset the mock,
-	 * using mocked method will fail the test.
-	 */
-	}
+//	@Test
+//	public void testAddAndSub() { 
+//		when(cs.add(20.0, 10.0)).thenReturn(30.0);
+//		assertEquals(calc.add(20.0, 10.0),30.0,0);
+//		//reset the mock 
+//		reset(cs);
+//		//test the add functionality after resetting the mock
+//		assertEquals(calc.add(20.0, 10.0),30.0,0);
+//		
+//	/*
+//	 * Here we've reset mock object. Calc makes use of calcService and after reset the mock,
+//	 * using mocked method will fail the test.
+//	 */
+//	}
 	
+	/* -----------------------------------------------------------------------------
+	 * -------------------
+	 * BDD is a style of writing test using given, when, then format as test methods.
+	 * 
+	 */
+	@Test
+	public void testAdd() {
+		//Given
+		given(cs.add(20.0, 10.0)).willReturn(30.0);
+		
+		//When
+		double result = cs.add(20.0, 10.0);
+		
+		// then 
+		assertEquals(result,30.0,0);
+	}
 	
 }
