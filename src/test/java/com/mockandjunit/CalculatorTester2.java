@@ -156,16 +156,36 @@ public class CalculatorTester2 {
 	 * BDD is a style of writing test using given, when, then format as test methods.
 	 * 
 	 */
+//	@Test
+//	public void testAdd() {
+//		//Given
+//		given(cs.add(20.0, 10.0)).willReturn(30.0);
+//		
+//		//When
+//		double result = cs.add(20.0, 10.0);
+//		
+//		// then 
+//		assertEquals(result,30.0,0);
+//	}
+	
+	/* -----------------------------------------------------------------------------
+	 * -------------------
+	 * Mockito provides a special Timeout option to test if a method is called within 
+	 * stipulated time frame
+	 * 
+	 */
+	
 	@Test
-	public void testAdd() {
-		//Given
-		given(cs.add(20.0, 10.0)).willReturn(30.0);
-		
-		//When
-		double result = cs.add(20.0, 10.0);
-		
-		// then 
-		assertEquals(result,30.0,0);
+	public void testAddAndSubtract() {
+		when(cs.add(20.0, 10.0)).thenReturn(30.0);
+		when(cs.sub(20.0, 10.0)).thenReturn(10.0);
+		assertEquals(calc.sub(20.0, 10.0),10.0,0);
+		assertEquals(calc.add(20.0, 10.0),30.0,0);
+		//Verify call to add method to be completed within 100ms-
+		verify(cs, timeout(100)).add(20.0, 10.0);
+		// Incovation count can be added to ensure mult invocations
+		// can be checked within given timeframe
+		verify(cs, timeout(100).times(1)).sub(20.0, 10.0);
 	}
 	
 }
