@@ -68,27 +68,56 @@ public class CalculatorTester {
 		 * to call CalculatorService.serviceUsed() more than once.
 		 */
 
-		when(calcService.add(10.0, 20.0)).thenReturn(30.00);
-		when(calcService.sub(20.0, 10.0)).thenReturn(10.0);
+//		when(calcService.add(10.0, 20.0)).thenReturn(30.00);
+//		when(calcService.sub(20.0, 10.0)).thenReturn(10.0);
+//
+//		assertEquals(calc.add(10.0, 20.0), 30.0, 0);
+//		assertEquals(calc.add(10.0, 20.0), 30.0, 0);
+//		assertEquals(calc.add(10.0, 20.0), 30.0, 0);
+//		assertEquals(calc.add(10.0, 20.0), 30.0, 0);
+//
+//		// test the subtract functionality
+//		assertEquals(calc.sub(20.0, 10.0), 10.0, 0);
+//
+//		// default call count = 1
+//		verify(calcService).sub(20.0, 10.0);
+//
+//		// check if add function is called 4 times
+//		verify(calcService, times(4)).add(10.0, 20.0);
+//
+//		// verify that method multiply was never called on a mock
+//		verify(calcService, never()).mult(10.0, 20.0);
 
-		assertEquals(calc.add(10.0, 20.0), 30.0, 0);
+		// __________________________________________________________
+
+		/*
+		 * Mockito provides additional methods to vary the expected call counts
+		 * atLeast(int min) - expects a minimum call atLeastOnce() - expects atleast one
+		 * call atMost(int max) - expects maximum call
+		 */
+
+		// add the behavior of calc service to add two numbers
+		when(calcService.add(10.0, 20.0)).thenReturn(30.00);
+
+		// add the behavior of calc service to subtract two numbers
+		when(calcService.sub(20.0, 10.0)).thenReturn(10.00);
+
+		// test the add functionality
 		assertEquals(calc.add(10.0, 20.0), 30.0, 0);
 		assertEquals(calc.add(10.0, 20.0), 30.0, 0);
 		assertEquals(calc.add(10.0, 20.0), 30.0, 0);
 
 		// test the subtract functionality
-		assertEquals(calc.sub(20.0, 10.0), 10.0, 0);
+		assertEquals(calc.sub(20.0, 10.0), 10.0, 0.0);
 
-		// default call count = 1
-		verify(calcService).sub(20.0, 10.0);
+		// check a minimum 1 call count
+		verify(calcService, atLeastOnce()).sub(20.0, 10.0);
 
-		// check if add function is called 4 times
-		verify(calcService, times(4)).add(10.0, 20.0);
+		// check if add function is called minimum 2 times
+		verify(calcService, atLeast(2)).add(10.0, 20.0);
 
-		// verify that method multiply was never called on a mock
-		verify(calcService, never()).mult(10.0, 20.0);
-
-		// __________________________________________________________
+		// check if add function is called maximum 3 times
+		verify(calcService, atMost(3)).add(10.0, 20.0);
 
 	}
 }
