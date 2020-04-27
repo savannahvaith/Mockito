@@ -8,7 +8,8 @@ public class Calculator {
 		this.calcService = calcService; 
 	}
 	public double add(double arg1, double arg2) {
-		return calcService.add(arg1, arg2);
+//		return calcService.add(arg1, arg2);
+		return arg1 + arg2;
 	}
 	public double sub(double arg1, double arg2) {
 		return calcService.sub(arg1, arg2);

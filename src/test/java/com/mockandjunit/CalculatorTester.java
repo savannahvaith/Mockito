@@ -1,14 +1,15 @@
 package com.mockandjunit;
 
-import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
+import static org.junit.Assert.assertEquals;
+// Verify ensures whether a mock method is being called with the required arguments or not 
+import static org.mockito.Mockito.verify;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import org.junit.Assert;
 
 // Use JUnit and Mockito together
 // @RunWith = attaches a runner with the test class to initialise the test data
@@ -31,6 +32,9 @@ public class CalculatorTester {
 		
 		// Test the add functionality
 		assertEquals(calcService.add(10.00,20.00), 30.00,0);
+		
+		//verify call to calcService is made with same arguments or not.
+		verify(calcService).add(10.0, 20.0);
 	}
 	
 }
