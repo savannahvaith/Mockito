@@ -34,7 +34,20 @@ public class CalculatorTester {
 		assertEquals(calcService.add(10.00,20.00), 30.00,0);
 		
 		//verify call to calcService is made with same arguments or not.
-		verify(calcService).add(10.0, 20.0);
+//		verify(calcService).add(10.0, 20.0); 
+		
+		// Verify with different arguments: 
+		verify(calcService.add(20.0, 30.0));
+		/* This will cause an error:
+		 * testAdd(com.mockandjunit.CalculatorTester): 
+		 * Argument passed to verify() is of type Double and is not a mock!
+		 * Make sure you place the parenthesis correctly!
+		 * See the examples of correct verifications:
+		 * verify(mock).someMethod();
+		 * verify(mock, times(10)).someMethod();
+		 * verify(mock, atLeastOnce()).someMethod();
+		 * false
+		 */
 	}
 	
 }
