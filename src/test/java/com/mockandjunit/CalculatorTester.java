@@ -30,14 +30,14 @@ public class CalculatorTester {
 		 * Mockito adds a functionality to a mock object using the methods when().
 		 */
 
-		// add the behaviour of calcService to add two numbers
-		// when(calcService.add(10.0, 20.0)).thenReturn(30.00);
-
-		// Test the add functionality
-		// assertEquals(calcService.add(10.00,20.00), 30.00,0);
-
-		// verify call to calcService is made with same arguments.
-		// verify(calcService).add(10.0, 20.0);
+//		// add the behaviour of calcService to add two numbers
+//		when(calcService.add(10.0, 20.0)).thenReturn(30.00);
+//
+//		// Test the add functionality
+//		assertEquals(calcService.add(10.00,20.00), 30.00,0);
+//
+//		// verify call to calcService is made with same arguments.
+//		verify(calcService).add(10.0, 20.0);
 
 		// __________________________________________________________
 
@@ -46,10 +46,10 @@ public class CalculatorTester {
 		 * arguments or not. It is done using the verify() method
 		 */
 
-		// when(calcService.add(10.0, 20.0)).thenReturn(30.00);
-		// assertEquals(calcService.add(10.00,20.00), 30.00,0);
-
-		// verify(calcService.add(20.0, 30.0));
+//		when(calcService.add(10.0, 20.0)).thenReturn(30.00);
+//		assertEquals(calcService.add(10.00,20.00), 30.00,0);
+//
+//		verify(calcService.add(20.0, 30.0));
 
 		/*
 		 * This will cause an error: testAdd(com.mockandjunit.CalculatorTester):
@@ -96,28 +96,27 @@ public class CalculatorTester {
 		 * call atMost(int max) - expects maximum call
 		 */
 
-		// add the behavior of calc service to add two numbers
-		when(calcService.add(10.0, 20.0)).thenReturn(30.00);
-
-		// add the behavior of calc service to subtract two numbers
-		when(calcService.sub(20.0, 10.0)).thenReturn(10.00);
-
-		// test the add functionality
-		assertEquals(calc.add(10.0, 20.0), 30.0, 0);
-		assertEquals(calc.add(10.0, 20.0), 30.0, 0);
-		assertEquals(calc.add(10.0, 20.0), 30.0, 0);
-
-		// test the subtract functionality
-		assertEquals(calc.sub(20.0, 10.0), 10.0, 0.0);
-
-		// check a minimum 1 call count
-		verify(calcService, atLeastOnce()).sub(20.0, 10.0);
-
-		// check if add function is called minimum 2 times
-		verify(calcService, atLeast(2)).add(10.0, 20.0);
-
-		// check if add function is called maximum 3 times
-		verify(calcService, atMost(3)).add(10.0, 20.0);
-
+//		// add the behavior of calc service to add two numbers
+//		when(calcService.add(10.0, 20.0)).thenReturn(30.00);
+//
+//		// add the behavior of calc service to subtract two numbers
+//		when(calcService.sub(20.0, 10.0)).thenReturn(10.00);
+//
+//		// test the add functionality
+//		assertEquals(calc.add(10.0, 20.0), 30.0, 0);
+//		assertEquals(calc.add(10.0, 20.0), 30.0, 0);
+//		assertEquals(calc.add(10.0, 20.0), 30.0, 0);
+//
+//		// test the subtract functionality
+//		assertEquals(calc.sub(20.0, 10.0), 10.0, 0.0);
+//
+//		// check a minimum 1 call count
+//		verify(calcService, atLeastOnce()).sub(20.0, 10.0);
+//
+//		// check if add function is called minimum 2 times
+//		verify(calcService, atLeast(2)).add(10.0, 20.0);
+//
+//		// check if add function is called maximum 3 times
+//		verify(calcService, atMost(3)).add(10.0, 20.0);
 	}
 }
