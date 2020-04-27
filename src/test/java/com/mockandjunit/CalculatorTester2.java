@@ -20,8 +20,8 @@ public class CalculatorTester2 {
 	public void setUp() {
 		calc = new Calculator();
 		cs = mock(CalculatorService.class);
-		MathApplication mapp = new MathApplication(); 
-		cs = spy(mapp);
+//		MathApplication mapp = new MathApplication(); 
+//		cs = spy(mapp);
 		calc.setCalculatorService(cs);
 	}
 
@@ -101,31 +101,53 @@ public class CalculatorTester2 {
 	 * When spy is called, then actual method of real object is called.
 	 */
 	
+//	@Test
+//	public void testAdd() {
+//		// Perform operation on real obj
+//		// Test the add functionality 
+//		assertEquals(calc.add(20.0, 10.0),30.0,0);
+//	}
+//	
+//	class MathApplication implements CalculatorService{
+//
+//		public double add(double arg1, double arg2) {
+//			return arg1 + arg2; 
+//			
+//		}
+//
+//		public double sub(double arg1, double arg2) {
+//			throw new UnsupportedOperationException("Method not implemented yet!");
+//		}
+//
+//		public double div(double arg1, double arg2) {
+//			throw new UnsupportedOperationException("Method not implemented yet!");
+//		}
+//
+//		public double mult(double arg1, double arg2) {
+//			throw new UnsupportedOperationException("Method not implemented yet!");
+//		}
+//		
+//	}
+	
+	/* -----------------------------------------------------------------------------
+	 * -------------------
+	 * Mockito provides the capability to reset a mock so that it can be reused later.
+	 * 
+	 */
 	@Test
-	public void testAdd() {
-		// Perform operation on real obj
-		// Test the add functionality 
+	public void testAddAndSub() { 
+		when(cs.add(20.0, 10.0)).thenReturn(30.0);
 		assertEquals(calc.add(20.0, 10.0),30.0,0);
+		//reset the mock 
+		reset(cs);
+		//test the add functionality after resetting the mock
+		assertEquals(calc.add(20.0, 10.0),30.0,0);
+		
+	/*
+	 * Here we've reset mock object. Calc makes use of calcService and after reset the mock,
+	 * using mocked method will fail the test.
+	 */
 	}
 	
-	class MathApplication implements CalculatorService{
-
-		public double add(double arg1, double arg2) {
-			return arg1 + arg2; 
-			
-		}
-
-		public double sub(double arg1, double arg2) {
-			throw new UnsupportedOperationException("Method not implemented yet!");
-		}
-
-		public double div(double arg1, double arg2) {
-			throw new UnsupportedOperationException("Method not implemented yet!");
-		}
-
-		public double mult(double arg1, double arg2) {
-			throw new UnsupportedOperationException("Method not implemented yet!");
-		}
-		
-	}
+	
 }
