@@ -2,9 +2,16 @@ package example;
 
 public class World {
 
-	public String goToIceCreamVan() {		
-		IceCreamVan icv = new IceCreamVan();
-		return "You get a " + icv.makeVanillaIceCream();
+	private IceCreamVan icv; 
+	public World() {}
+	public World(IceCreamVan icv) {
+		this.icv = icv;
+	}
+	
+	public IceCream goToIceCreamVan() {		
+		IceCream iscream = icv.makeVanillaIceCream();
+		iscream.setColdness(iscream.getColdness()-1);
+		return iscream; 
 		
 	}
 

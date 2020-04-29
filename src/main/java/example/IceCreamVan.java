@@ -2,8 +2,8 @@ package example;
 
 public class IceCreamVan {
 
-	public String makeVanillaIceCream() { 
-		return "Vanilla Ice cream";
+	public IceCream makeVanillaIceCream() { 
+		return new IceCream("Strawberry", 10);
 		
 	}
 
